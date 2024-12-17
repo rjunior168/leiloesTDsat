@@ -7,6 +7,7 @@
  *
  * @author Adm
  */
+import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 public class cadastroVIEW extends javax.swing.JFrame {
@@ -51,24 +52,22 @@ public class cadastroVIEW extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Valor:");
 
-        cadastroNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroNomeActionPerformed(evt);
-            }
-        });
+        cadastroNome.addActionListener(this::cadastroNomeActionPerformed);
 
         btnCadastrar.setBackground(new java.awt.Color(153, 255, 255));
         btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
+        btnCadastrar.addActionListener(this::btnCadastrarActionPerformed);
 
         btnProdutos.setText("Consultar Produtos");
         btnProdutos.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProdutosActionPerformed(evt);
+            }
+
+
+            private void btnProdutosActionPerformed(ActionEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
 
@@ -136,11 +135,11 @@ public class cadastroVIEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void cadastroNomeActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void cadastroNomeActionPerformed() {                                             
         // ActionListener do campo nome, não utilizado no código atual
     }                                            
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void btnCadastrarActionPerformed() {                                             
         // Coleta os dados dos campos
         String nome = cadastroNome.getText();
         String valor = cadastroValor.getText();
@@ -172,11 +171,6 @@ public class cadastroVIEW extends javax.swing.JFrame {
         }
     }                                            
 
-    private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // Abre a tela de listagem de produtos
-        listagemVIEW listagem = new listagemVIEW(); 
-        listagem.setVisible(true);
-    }                                           
 
     /**
      * @param args the command line arguments
@@ -194,22 +188,16 @@ public class cadastroVIEW extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadastroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadastroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadastroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(cadastroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new cadastroVIEW().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new cadastroVIEW().setVisible(true);
         });
     }
 
